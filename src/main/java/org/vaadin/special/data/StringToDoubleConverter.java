@@ -35,7 +35,7 @@ public class StringToDoubleConverter extends
 		try {
 			result = Double.parseDouble(value.replace(",", "."));
 		} catch (NumberFormatException e) {
-			throw new ConversionException(String.format("Could not convert {0} to {1}.", value, getModelType().getName()));
+			throw new ConversionException(String.format("Could not convert %s to %s.", value, getModelType().getName()));
 		}
 
 		return result;

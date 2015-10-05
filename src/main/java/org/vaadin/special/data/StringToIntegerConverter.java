@@ -53,7 +53,7 @@ public class StringToIntegerConverter extends
 		try {
 			result = Integer.parseInt(value);
 		} catch (NumberFormatException e) {
-			throw new ConversionException(String.format("Could not convert {0} to {1}.", value, getModelType().getName()));
+			throw new ConversionException(String.format("Could not convert %s to %s.", value, getModelType().getName()));
 		}
 
 		return result;
