@@ -16,7 +16,10 @@
 package org.vaadin.special.ui;
 
 import java.lang.reflect.Method;
+import java.util.Map.Entry;
+import java.util.Set;
 
+import org.vaadin.special.data.ShortcutConstants;
 import org.vaadin.special.event.ComponentEvent;
 import org.vaadin.special.shared.ui.keyaction.KeyActionServerRpc;
 import org.vaadin.special.shared.ui.keyaction.KeyActionState;
@@ -115,5 +118,34 @@ public class KeyAction extends AbstractExtension {
 
 	public void addKeypressListener(KeyActionListener keyActionListener) {
 		addListener(KeyActionEvent.class, keyActionListener, KeyActionListener.method);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+
+		if (getState().shift) {
+			builder.append("Shift+");
+		}
+		if (getState().ctrl) {
+			builder.append("Ctrl+");
+		}
+		if (getState().alt) {
+			builder.append("Alt+");
+		}
+		if (getState().meta) {
+			builder.append("Meta+");
+		}
+
+		int keyCode = getState().keyCode;
+
+		Set<Entry<String, Integer>> entries = ShortcutConstants.SHORTCUT_MAP.entrySet();
+		for (Entry<String, Integer> entry : entries) {
+			if (keyCode == entry.getValue()) {
+				builder.append(entry.getKey());
+			}
+		}
+
+		return builder.toString();
 	}
 }

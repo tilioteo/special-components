@@ -5,7 +5,7 @@
 	<groupId>org.vaadin</groupId>
 	<artifactId>special-components</artifactId>
 	<packaging>jar</packaging>
-	<version>0.9.2</version>
+	<version>0.9.3</version>
 	<name>Vaadin Special Components Add-on </name>
 
 	<properties>
@@ -135,7 +135,7 @@
 				</configuration>
 			</plugin>
 			
-			<plugin>
+			<!--plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.9</version>
@@ -147,7 +147,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin-->
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
