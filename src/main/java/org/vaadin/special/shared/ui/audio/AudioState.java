@@ -3,13 +3,11 @@
  */
 package org.vaadin.special.shared.ui.audio;
 
-import com.vaadin.shared.ui.AbstractMediaState;
-
 /**
  * @author kamil
  *
  */
 @SuppressWarnings("serial")
-public class AudioState extends AbstractMediaState {
+public class AudioState extends com.vaadin.shared.ui.audio.AudioState {
 
 }
