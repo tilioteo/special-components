@@ -29,6 +29,8 @@ public class MultipleComponentPanel<C extends AbstractComponent> extends Panel {
 	private Orientation orientation = Orientation.Horizontal;
 	private String childWidth = null;
 	private String childHeight = null;
+	private String childStyle = null;
+	private String oldChildStyle = null;
 
 	protected MultipleComponentPanel() {
 		// nop
@@ -61,12 +63,16 @@ public class MultipleComponentPanel<C extends AbstractComponent> extends Panel {
 		return childList.iterator();
 	}
 
-	public String getChildsHeight() {
+	public String getChildrenHeight() {
 		return childHeight;
 	}
 
-	public String getChildsWidth() {
+	public String getChildrenWidth() {
 		return childWidth;
+	}
+
+	public String getChildrenStyle() {
+		return childStyle;
 	}
 
 	public Orientation getOrientation() {
@@ -77,18 +83,32 @@ public class MultipleComponentPanel<C extends AbstractComponent> extends Panel {
 		child.setHeight(childHeight);
 	}
 
-	public void setChildsHeight(String height) {
+	public void setChildrenHeight(String height) {
 		this.childHeight = height;
 		markAsDirty();
 	}
 
-	public void setChildsWidth(String width) {
+	public void setChildrenWidth(String width) {
 		this.childWidth = width;
 		markAsDirty();
 	}
 
 	private void setChildWidth(C child) {
 		child.setWidth(childWidth);
+	}
+	
+	public void setChildrenStyle(String style) {
+		this.oldChildStyle = childStyle;
+		this.childStyle = style;
+		markAsDirty();
+	}
+	
+	private void setChildStyle(C child) {
+		if (oldChildStyle != null) {
+			child.removeStyleName(oldChildStyle);
+		}
+		
+		child.addStyleName(childStyle);
 	}
 
 	public void setOrientation(Orientation orientation) {
@@ -123,6 +143,7 @@ public class MultipleComponentPanel<C extends AbstractComponent> extends Panel {
 		for (C child : childList) {
 			setChildWidth(child);
 			setChildHeight(child);
+			setChildStyle(child);
 
 			if (layout != null) {
 				layout.addComponent(child);
