@@ -68,4 +68,10 @@ public class ButtonPanel extends MultipleComponentPanel<Button> {
 		this.selected = button;
 	}
 
+	public void clearSelection() {
+		if (selected != null) {
+			selected = null;
+		}
+		getUI().focus();
+	}
 }

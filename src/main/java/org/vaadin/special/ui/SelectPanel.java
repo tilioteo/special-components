@@ -144,4 +144,11 @@ public class SelectPanel extends MultipleComponentPanel<SelectButton> implements
 		}
 	}
 
+	public void clearSelection() {
+		for (SelectButton button : selectedButtons) {
+			button.setValue(false);
+		}
+		selectedButtons.clear();
+		getUI().focus();
+	}
 }
